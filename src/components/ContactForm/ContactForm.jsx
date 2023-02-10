@@ -1,7 +1,16 @@
 import PropTypes from 'prop-types';
 import * as yup from 'yup';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
+import {
+  Button,
+  Input,
+  Label,
+  Title,
+  InputName,
+  Error,
+  FormWrapper,
+} from './ContactForm.styled';
 
 const MIN_PHONE_LENGTH = 9999;
 const MAX_PHONE_LENGTH = 1000000000000;
@@ -33,7 +42,7 @@ export const ContactForm = ({ onSubmit }) => {
   const schema = yup.object().shape({
     name: yup
       .string()
-      .min(1, onMinName)
+      .min(4, onMinName)
       .max(15, onMaxName)
       .required(onEmptyFieldName),
     tel: yup
@@ -59,20 +68,20 @@ export const ContactForm = ({ onSubmit }) => {
       onSubmit={handleSubmit}
       validationSchema={schema}
     >
-      <Form autoComplete="off">
-        <h1>Phonebook</h1>
-        <label htmlFor="name">
-          Name
-          <Field type="text" name="name" />
-          <ErrorMessage component="div" name="name" />
-        </label>
-        <label htmlFor="number">
-          Number
-          <Field type="tel" name="tel" />
-          <ErrorMessage component="div" name="tel" />
-        </label>
-        <button type="submit">Add a contact</button>
-      </Form>
+      <FormWrapper autoComplete="off">
+        <Title>Phonebook</Title>
+        <Label htmlFor="name">
+          <InputName>Name</InputName>
+          <Input type="text" name="name" placeholder="Name" />
+          <Error component="div" name="name" />
+        </Label>
+        <Label htmlFor="number">
+          <InputName>Number</InputName>
+          <Input type="tel" name="tel" placeholder="Phone" />
+          <Error component="div" name="tel" />
+        </Label>
+        <Button type="submit">Add a contact</Button>
+      </FormWrapper>
     </Formik>
   );
 };

@@ -1,27 +1,11 @@
-import PropTypes from 'prop-types';
+import { List, Title, Wrapper } from './ContactList.styled';
 
-export const ContactList = ({ contacts, children }) => {
+export const ContactList = ({ children }) => {
   return (
-    <>
-      <h2>Contacts</h2>
-      {children}
-      <ul>
-        {contacts.map(({ tel, name, id }) => (
-          <li key={id}>
-            {name}: {tel}
-          </li>
-        ))}
-      </ul>
-    </>
+    <Wrapper>
+      <Title>Contacts</Title>
+      {children[0]}
+      <List>{children[1]}</List>
+    </Wrapper>
   );
-};
-
-ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      tel: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      id: PropTypes.string.isRequired,
-    })
-  ),
 };

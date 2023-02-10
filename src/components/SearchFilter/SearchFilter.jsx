@@ -1,10 +1,15 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import { Input, Title } from './SearchFilter.styled';
 
 export const SearchFilter = ({ onChange }) => {
   return (
     <>
-      <h3>Find contacts by name</h3>
-      <input onChange={onChange}></input>
+      <Title>Find contacts by name</Title>
+      <Input onChange={onChange} placeholder="Find contact"></Input>
     </>
   );
+};
+
+SearchFilter.propTypes = {
+  onChange: PropTypes.func,
 };
