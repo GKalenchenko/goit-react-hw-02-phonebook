@@ -24,4 +24,5 @@ ContactElement.propTypes = {
       id: PropTypes.string.isRequired,
     })
   ),
+  onClick: PropTypes.func,
 };

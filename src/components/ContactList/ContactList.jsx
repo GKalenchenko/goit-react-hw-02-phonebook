@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { List, Title, Wrapper } from './ContactList.styled';
 
 export const ContactList = ({ children }) => {
@@ -8,4 +9,8 @@ export const ContactList = ({ children }) => {
       <List>{children[1]}</List>
     </Wrapper>
   );
+};
+
+ContactList.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.element),
 };
